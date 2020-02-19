@@ -1,0 +1,26 @@
+<div class="container book-details">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <img class="card-img-top" src="{{book.imageLinks.thumbnail || '../../../assets/book.png'}}" alt="{{book.title}}">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{book.title}}</h5>
+            <p class="card-text">
+              published date : {{book.publishedDate}}
+            </p>
+            <p *ngIf="book.authors?.length > 0">
+            Authors:
+            </p>
+            <p *ngFor="let item of book.authors">
+              {{item}}
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

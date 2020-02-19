@@ -1,0 +1,41 @@
+<div class="search">
+  <div class="text-center mt-3">
+    <h2>Search a book</h2>
+  </div>
+  <div class="container  mt-3 searchBook">
+    <div class="row justify-content-center">
+      <form class="form-inline" #form="ngForm" (ngSubmit)="searchBook()" novalidate>
+        <div class="form-group">
+          <input type="text" class="form-control ml-1" [(ngModel)]="query" placeholder="serach text" name="query" />
+          <button class="btn btn-success my-2 my-sm-0" type="submit"> Search </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div *ngFor="let book of pagedItems " class="col-lg-2 col-md-3 col-sm-6">
+      <app-book [book]="book"></app-book>
+    </div>
+    
+  </div>
+  <div class="row text-center">
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+      <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(1)">First</a>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+      </li>
+      <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+          <a (click)="setPage(page)">{{page}}</a>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.currentPage + 1)">Next</a>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.totalPages)">Last</a>
+      </li>
+  </ul>
+  </div>
+
+</div>
